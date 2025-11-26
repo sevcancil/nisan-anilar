@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+    --khaki: #6d7e5f;
+    --orange: #e07a5f;
+    --cream: #f4f1ea;
+    --dark-green: #3a4a3b;
+    --gold: #d4af37;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cream);
+    background-image: url('../img/bg-flower.png'); /* Saydam png yapraklar */
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--dark-green);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid var(--khaki);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Çiçek süslemeleri için CSS (Köşelere) */
+.container::before, .container::after {
+    content: '✿';
+    position: absolute;
+    font-size: 50px;
+    color: var(--orange);
+    opacity: 0.5;
+}
+.container::before { top: -10px; left: -10px; transform: rotate(-45deg); }
+.container::after { bottom: -10px; right: -10px; transform: rotate(135deg); }
+
+h1, h2 {
+    font-family: 'Great Vibes', cursive;
+    color: var(--khaki);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--khaki);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    background-color: var(--orange);
+    transform: translateY(-2px);
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--khaki);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+/* Admin Panel Özellikleri */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+.media-item {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.media-item img, .media-item video {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Notebook Stili */
+.notebook-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.note-card {
+    width: 45%;
+    background: #fdf6e3;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5;
+    background-image: linear-gradient(#999 1px, transparent 1px);
+    background-size: 100% 1.2em;
+    transform: rotate(-1deg);
+}
+.note-card:nth-child(even) {
+    transform: rotate(2deg);
+    background-color: #fff9c4;
+}
+.note-card h4 {
+    margin: 0 0 10px 0;
+    color: var(--orange);
+    font-family: 'Great Vibes', cursive;
+}
+
+/* Audio Player */
+#music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--orange);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 600px) {
+    .note-card { width: 100%; }
+}
+
+.date-text {
+    /* Tarih yazısını başlığın altında vurgulamak için */
+    color: #ce802a; /* Turuncu tonu (Tema renginizden biri) */
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: -10px; /* Başlığa yaklaştır */
+    margin-bottom: 30px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    /* Başlık rengini tema renginizle uyumlu hale getirelim */
+    color: #3b533e; /* Haki Yeşil tonu */
+}
