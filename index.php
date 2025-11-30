@@ -19,7 +19,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <h1>Sevcan & Eray</h1>
     <h4>Nişan Hatırası</h4>
     <p class="date-text">20.12.2025</p> 
-    <p>Nişanımızdaki en güzel anları bizimle paylaşır mısınız?</p>
+    <p>Nişanımızdaki en güzel anları bizimle paylaşır mısınız?<br>
+        <br>Telefonunuzdan çektiğiniz fotoğrafları ve videoları bizimle paylaşabilir, bize sesli mesaj ve not bırakabilirsiniz.<br>
+        <br>Nişan törenimize katıldığınız için teşekkürler. İyi ki varsınız!
+    </p>
     <form method="POST">
         <input type="text" name="name" placeholder="Adınız ve Soyadınız" required>
         <button type="submit" class="btn" onclick="playMusic()">Giriş Yap ve Paylaş</button>
