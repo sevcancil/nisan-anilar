@@ -31,7 +31,38 @@ Mekan içerisindeki büyük ekranlar için **Canlı Slayt Akışı** ve organiza
 * **Otomatik Akış:** Yeni yüklenen fotoğrafları sayfa yenilemeye gerek kalmadan algılar.
 * **Döngü Modu:** Fotoğraf yüklenmediğinde mevcut havuzdan rastgele gösterime devam eder.
 * **Full Screen:** Projektör ve TV ekranları için optimize edilmiştir.
+---
+## ⚙️ Kurulum (Installation)
 
+Projeyi çalıştırmak için aşağıdaki veritabanı yapısını oluşturmanız gerekmektedir.
+
+### 1. Veritabanı Kurulumu (SQL)
+Hosting panelinizde (phpMyAdmin) boş bir SQL penceresi açın ve aşağıdaki kodları çalıştırın:
+
+```sql
+/* Veritabanını Oluştur */
+CREATE DATABASE IF NOT EXISTS nisan_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE nisan_db;
+
+/* Yüklemeler Tablosu */
+CREATE TABLE IF NOT EXISTS uploads (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guest_name VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    file_type ENUM('image', 'video', 'audio', 'note') NOT NULL,
+    note_content TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+/* Yönetici Ayarları Tablosu */
+CREATE TABLE IF NOT EXISTS settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_pass VARCHAR(255) NOT NULL
+);
+
+/* Varsayılan Admin Şifresi: 1234 */
+/* Not: Şifre MD5 ile hashlenmiştir. */
+INSERT INTO settings (admin_pass) VALUES (MD5('1234'));
 ---
 
 ## 📂 Dosya Yapısı
