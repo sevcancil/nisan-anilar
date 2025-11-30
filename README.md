@@ -31,10 +31,12 @@ Mekan içerisindeki büyük ekranlar için **Canlı Slayt Akışı** ve organiza
 * **Otomatik Akış:** Yeni yüklenen fotoğrafları sayfa yenilemeye gerek kalmadan algılar.
 * **Döngü Modu:** Fotoğraf yüklenmediğinde mevcut havuzdan rastgele gösterime devam eder.
 * **Full Screen:** Projektör ve TV ekranları için optimize edilmiştir.
+
 ---
+
 ## ⚙️ Kurulum (Installation)
 
-Projeyi çalıştırmak için aşağıdaki veritabanı yapısını oluşturmanız gerekmektedir.
+Projeyi çalıştırmak için aşağıdaki adımları takip edin.
 
 ### 1. Veritabanı Kurulumu (SQL)
 Hosting panelinizde (phpMyAdmin) boş bir SQL penceresi açın ve aşağıdaki kodları çalıştırın:
@@ -62,28 +64,40 @@ CREATE TABLE IF NOT EXISTS settings (
 
 /* Varsayılan Admin Şifresi: 1234 */
 /* Not: Şifre MD5 ile hashlenmiştir. */
-INSERT INTO settings (admin_pass) VALUES (MD5('1234'));
----
+INSERT INTO settings (admin_pass) VALUES (MD5('1234')); 
+```
+### 1. Veritabanı Bağlantısı
+db.php dosyasını açarak sunucu bilgilerinizi girin:
+
+```
+$host = 'localhost';
+$dbname = 'nisan_db';
+$user = 'root'; /* Sunucu kullanıcı adı */
+$pass = '';     /* Sunucu şifresi */
+```
+3. Klasör İzinleri
+uploads klasörü ve alt klasörlerinin yazılabilir olduğundan emin olun (Linux sunucular için):
+```
+chmod -R 777 uploads/
+```
 
 ## 📂 Dosya Yapısı
-
 ```text
 nisan-anilar/
 ├── admin/
 │   ├── index.php        # Yönetim paneli ve Dashboard
 │   ├── download_zip.php # Toplu indirme scripti
 │   ├── script.js 
-│   ├── style.css 
-│   └── (Yönetici işlemleri burada döner)
+│   └── style.css 
 ├── assets/
 │   ├── css/             # Tüm projenin stil dosyası
 │   ├── audio/           # Tüm projenin ses dosyası
 │   ├── js/              # Tüm projenin js dosyası
-│   └── img/             # background resimleri buraya yüklenir
+│   └── img/             # Background resimleri
 ├── uploads/             # Yüklenen dosyaların toplandığı alan
 │   ├── audios/
 │   ├── images/
-│   └── videos/
+│   ├── videos/
 ├── db.php               # Veritabanı bağlantı ayarları
 ├── index.php            # Misafir giriş ekranı
 ├── menu.php             # Seçim menüsü (Foto/Ses/Not)
@@ -91,4 +105,8 @@ nisan-anilar/
 ├── upload_media.php     # Fotoğraf/Video yükleme formu
 ├── upload_audio.php     # Ses kayıt arayüzü
 ├── upload_note.php      # Not yazma formu
-└── success.php          # Gönderim tamamlanınca çıkan karşılama ekranı
+└── success.php          # Başarılı işlem sonrası karşılama ekranı
+```
+Geliştirici: Sevcan
+
+📅 Tarih: 30.11.2025
